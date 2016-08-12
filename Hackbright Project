@@ -1,0 +1,100 @@
+shopping_lists = {
+	'Target': ["socks", "soap", "detergent", "sponges"],
+	'Safeway': ["butter", "cake", "cookies", "bread"],
+	'TraderJoes': ["apples", "oranges", "banana", "milk"],
+	'Sprouts': ["oreos", "brownies", "soda"]
+}
+
+
+def display_menu():
+	print """Main Menu
+		1 - Show all lists.
+		2 - Show a specific list.
+		3 - Add a new shopping list.
+		4 - Add an item to shopping list.
+		5 - Remove an item from a shopping list.
+		6 - Remove a list by nickname.
+		7 - Exit when you are done. 
+		"""
+
+def user_choice():
+	choice = 1 #raw_input ("Type your selection:")
+	return choice
+
+def manage_list(choice):
+	if choice == "1":
+		show_lists()
+	elif choice == "2":
+		show_specific_item()
+	elif choice == "3":
+		add_new_list()
+	elif choice == "4":
+		add_new_item()
+	elif choice == "5":
+		remove_item()
+	elif choice == "6":
+		remove_list_name()
+	else: 
+		return
+
+
+
+def show_lists():
+	#todo: print the names of the lists
+	print shopping_lists.keys()
+
+
+def show_specific_item():
+	#for loop to iterate through the chosen list for that specific item
+	item_lookup = "soap" #raw_input("What item are you looking for:")
+	
+	for lists in shopping_lists.values():
+		if item_lookup in lists:
+			print "you have %s in your list" % (item_lookup)
+	else:
+		print "Item not found"
+
+def add_new_list():
+	# add a wholefoods list, what do you need? .append / concatenate, etc.
+	adding_new_list = "Wholefoods" #raw_input("Name your new list:") 
+	shopping_lists["Wholefoods"] = ["Kale", "Argula", "Spinach"]
+	return "%s list has been added." % (adding_new_list)
+
+
+def add_new_item(): 
+	# add ONE item to the existing list
+	list_name = "Target" #raw_input("Which list would you like to add an item to:")
+	if list_name in shopping_lists:
+		new_item = "bubble gum" #raw_input ("What would you like you to add:")
+		shopping_lists[list_name].append(new_item)
+	return "%s list has been added to %s." % (new_item, list_name)
+	
+
+def remove_item():
+	list_name = "Target" #raw_input("Which list would you like to remove an item from:")
+	if list_name in shopping_lists:
+		removed_item = "soap" #raw_input ("What would you like you to remove:")
+		shopping_lists[list_name].remove(removed_item)
+	return "%s list has been removed from %s." % (removed_item, list_name)
+	
+
+def remove_list_name(): 
+	list_name = "Target" #raw_input("Which list would you like to remove:")
+	if list_name in shopping_lists:
+		del shopping_lists[list_name]
+	return "%s list has been removed." % (list_name)
+
+
+
+print remove_list_name()
+choice = user_choice()
+ 	
+
+
+# def main():
+# 	prompt() 
+	
+
+
+# if __name__ == '__main__':
+# 	main()
