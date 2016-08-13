@@ -18,7 +18,7 @@ def display_menu():
 		"""
 
 def user_choice():
-	choice = 1 #raw_input ("Type your selection:")
+	choice = raw_input ("Type your selection:")
 	return choice
 
 def manage_list(choice):
@@ -41,12 +41,13 @@ def manage_list(choice):
 
 def show_lists():
 	#todo: print the names of the lists
-	print shopping_lists.keys()
+	print sorted(shopping_lists, key=str.Upper)
+	#shopping_lists.keys()
 
 
 def show_specific_item():
 	#for loop to iterate through the chosen list for that specific item
-	item_lookup = "soap" #raw_input("What item are you looking for:")
+	item_lookup = raw_input("What item are you looking for:")
 	
 	for lists in shopping_lists.values():
 		if item_lookup in lists:
@@ -56,14 +57,14 @@ def show_specific_item():
 
 def add_new_list():
 	# add a wholefoods list, what do you need? .append / concatenate, etc.
-	adding_new_list = "Wholefoods" #raw_input("Name your new list:") 
+	adding_new_list = raw_input("Name your new list:") 
 	shopping_lists["Wholefoods"] = ["Kale", "Argula", "Spinach"]
 	return "%s list has been added." % (adding_new_list)
 
 
 def add_new_item(): 
 	# add ONE item to the existing list
-	list_name = "Target" #raw_input("Which list would you like to add an item to:")
+	list_name = raw_input("Which list would you like to add an item to:")
 	if list_name in shopping_lists:
 		new_item = "bubble gum" #raw_input ("What would you like you to add:")
 		shopping_lists[list_name].append(new_item)
@@ -71,7 +72,7 @@ def add_new_item():
 	
 
 def remove_item():
-	list_name = "Target" #raw_input("Which list would you like to remove an item from:")
+	list_name = raw_input("Which list would you like to remove an item from:")
 	if list_name in shopping_lists:
 		removed_item = "soap" #raw_input ("What would you like you to remove:")
 		shopping_lists[list_name].remove(removed_item)
@@ -79,22 +80,21 @@ def remove_item():
 	
 
 def remove_list_name(): 
-	list_name = "Target" #raw_input("Which list would you like to remove:")
+	list_name = raw_input("Which list would you like to remove:")
 	if list_name in shopping_lists:
 		del shopping_lists[list_name]
 	return "%s list has been removed." % (list_name)
 
 
 
-print remove_list_name()
-choice = user_choice()
+#print remove_list_name()
+
  	
 
-
-# def main():
-# 	prompt() 
+def main():
+	choice = user_choice()
 	
 
 
-# if __name__ == '__main__':
-# 	main()
+if __name__ == '__main__':
+ 	main()
